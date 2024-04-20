@@ -14,6 +14,7 @@ class CartLivewire extends Component
     public function viewcart (){
 
         $this->modal = true;
+        
 
     }
     public function render()
