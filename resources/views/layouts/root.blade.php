@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('webfont/tabler-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.css') }}">
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
     <title>Document</title>
@@ -26,7 +28,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
-
+                    <li class="nav-item">
+                        <a href="{{ route('root.products') }}" class="nav-link">Products</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -72,6 +76,9 @@
     </nav>
     {{ $slot }}
     @livewireScripts
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.js') }}"></script>
+<x-livewire-alert::scripts />
+    @stack('scripts')
 </body>
 
 </html>

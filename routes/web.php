@@ -5,7 +5,9 @@ use App\Livewire\Dash\DashboardLivewire;
 use App\Livewire\Dash\Products\ProductsLivewire;
 use App\Livewire\Dash\Users\UsersLivewire;
 use App\Livewire\Orders\OrdersLivewire;
+use App\Livewire\Root\Categories\RootCategoriesLivewire;
 use App\Livewire\Root\Products\ProductsLivewire as ProductsProductsLivewire;
+use App\Livewire\Root\Products\RootProductsLivewire;
 use App\Livewire\Root\WelcomeLivewire;
 use App\Livewire\Sales\SalesCashierLivewire;
 use App\Livewire\Sales\SalesLivewire;
@@ -37,8 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dash/sales/cashier',SalesCashierLivewire::class)->name('sales.cashier');
     Route::get('dash/sales',SalesLivewire::class)->name('sales');
     //normal user
-    Route::get('/products',ProductsLivewire::class)->name('root.products');
-    Route::get('/categories',ProductsLivewire::class)->name('root.categories');
+    Route::get('/products',RootProductsLivewire::class)->name('root.products');
+    Route::get('/categories',RootCategoriesLivewire::class)->name('root.categories');
 
 });
 // Route::middleware(['auth','isadmin'])->group(function () {

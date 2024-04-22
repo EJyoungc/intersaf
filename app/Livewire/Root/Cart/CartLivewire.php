@@ -5,6 +5,7 @@ namespace App\Livewire\Root\Cart;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class CartLivewire extends Component
 {
@@ -17,6 +18,17 @@ class CartLivewire extends Component
         
 
     }
+
+    #[On('cart_updated')]
+    public function cart_updated(){
+
+        $this->modal = false;
+        $this->render();
+    }
+
+
+
+
     public function render()
     {   
         $cart = Cart::where('user_id',Auth::user()->id)->get();

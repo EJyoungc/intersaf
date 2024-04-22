@@ -1,5 +1,5 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
+    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 
        <div class="content-header">
         <div class="container-fluid">
