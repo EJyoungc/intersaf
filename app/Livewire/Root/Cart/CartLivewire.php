@@ -44,6 +44,11 @@ class CartLivewire extends Component
         $this->alert('success', 'Item removed from cart');
     }
 
+
+    public function cancel(){
+        $this->reset(['modal']);
+    }
+
     public function add_quantity($id){
         $cart = Cart::where('product_id', $id)->where('user_id', Auth::user()->id)->first();
         $cart->increment('quantity');
