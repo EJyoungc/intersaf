@@ -9,7 +9,8 @@
         @forelse ($products as $item)
            <div class="col-lg-3">
           <div class="card">
-            <img class="card-img-top" src="holder.js/100x180/" alt="">
+            <img class="card-img-top" style="height: 250px;" src="{{ asset('assets/uploads/'.$item->image) }}" alt="">
+            
             <div class="card-body">
               <h4 class="card-title">{{ $item->name }}</h4>
               <p class="card-text">
