@@ -113,8 +113,6 @@ class CartLivewire extends Component
         ]);
         return redirect()->to($session->url);
     
-
-
     }
 
 

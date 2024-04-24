@@ -39,7 +39,7 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/checkout/success/',function(){
         
         $o = Order::create([
-            "stripe_id"=>ssession('stripe_id'),
+            "stripe_id"=>session('stripe_id'),
             "total"=>session('stripe_id'),
         ]);
 
