@@ -35,7 +35,7 @@
         <div class="">Total MWK{{ $totalPrice }}.00</div>
       </div>
       <div class="ms-auto p-2">
-        <button class="btn btn-primary" wire:click="checkout">Checkout</button>
+        <button class="btn btn-primary" wire:click.prevent="checkout">Checkout</button>
       </div>
     </div>
   </x-modal>

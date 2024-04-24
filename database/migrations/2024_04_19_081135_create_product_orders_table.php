@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('product_id');
+            $table->integer('product_name');
+            $table->integer('product_price');
             $table->integer('user_id');
+            $table->text('stripe_id')->nullable();
             $table->timestamps();
         });
     }

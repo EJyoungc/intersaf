@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('total');
-            $table->integer('discount')->default(0);
+            // $table->integer('discount')->default(0);
             $table->string('status')->default('unpaid');
             $table->timestamps();
         });
