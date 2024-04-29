@@ -57,6 +57,7 @@ class CartLivewire extends Component
     public function add_quantity($id)
     {
         $cart = Cart::where('product_id', $id)->where('user_id', Auth::user()->id)->first();
+        // dd($cart);
         $cart->increment('quantity');
         $this->alert('success', 'Item added to cart');
     }
@@ -111,6 +112,8 @@ class CartLivewire extends Component
             'total'=>$this->totalPrice,
         
         ]);
+        // dd(se)
+
         return redirect()->to($session->url);
     
     }

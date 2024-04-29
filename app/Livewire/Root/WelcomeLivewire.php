@@ -3,6 +3,7 @@
 namespace App\Livewire\Root;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -10,6 +11,7 @@ use Livewire\Component;
 class WelcomeLivewire extends Component
 {
 
+    
 
     #[Layout('layouts.root')] 
     public function render()

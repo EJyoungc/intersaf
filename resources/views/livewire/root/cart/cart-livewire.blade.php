@@ -15,9 +15,9 @@
         </div>
         <div>
           <div class="btn-group">
-            <button class="btn btn-sm btn-success " wire:click.prevent='add_quantity({{ $item->id }})'>+</button>
+            <button class="btn btn-sm btn-success " wire:click.prevent='add_quantity({{ $item->product_id }})'>+</button>
             <button class="btn btn-sm btn-secondary " wire:click.prevent='subtract_quantity({{ $item->product_id }})' >-</button>
-            <button class="btn btn-sm btn-danger " wire:click.prevent='remove_from_cart({{ $item->id }})'>X</button>
+            <button class="btn btn-sm btn-danger " wire:click.prevent='remove_from_cart({{ $item->product_id }})'>X</button>
           </div>
         </div>
       </a>   
