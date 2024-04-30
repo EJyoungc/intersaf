@@ -50,6 +50,7 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/orders',TransactionsLivewire::class)->name('root.orders');
     Route::get('/categories',CategoriesCategoryLivewire::class)->name('root.categories');
     Route::get('/categories/{id}/products',CategoryProductsLivewire::class)->name('root.cat.products');
+    Route::get('/help',Root )
     
 
     Route::get('/checkout/success/',function(){
