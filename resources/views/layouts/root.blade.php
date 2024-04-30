@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a href="{{ route('root.orders') }}" class="nav-link">Orders</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('root.categories') }}" class="nav-link">Categories</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -6,8 +6,7 @@ use Livewire\Component;
 
 class RootCategoriesLivewire extends Component
 {
-    #[Layout('layouts.root')] 
-
+    #[Layout('layouts.root')]
     public function render()
     {
         return view('livewire.root.categories.root-categories-livewire');

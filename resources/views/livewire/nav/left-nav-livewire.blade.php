@@ -48,10 +48,10 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a href="{{ route('sales.cashier') }}" class="nav-link">
+                    <a href="{{ route('discount') }}" class="nav-link">
                         <i class="fa fa-money-bill nav-icon" aria-hidden="true"></i>
                         <p>
-                            Cashier
+                            Discount
                             {{-- <span class="right badge badge-danger">New</span> --}}
                         </p>
                     </a>

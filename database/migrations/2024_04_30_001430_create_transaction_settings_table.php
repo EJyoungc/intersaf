@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('transaction_settings', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('total');
-            $table->text("stripe_id")->nullable();
-            $table->integer('discount')->default(0);
-            $table->string('status')->default('unpaid');
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('transaction_settings');
     }
 };

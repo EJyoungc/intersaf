@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\PdfController;
 use App\Livewire\Dash\Category\CategoryLivewire;
 use App\Livewire\Dash\DashboardLivewire;
 use App\Livewire\Dash\Products\ProductsLivewire;
 use App\Livewire\Dash\Users\UsersLivewire;
+use App\Livewire\Discount\DiscountLivewire;
 use App\Livewire\Orders\OrdersLivewire;
+use App\Livewire\Root\Categories\CategoryLivewire as CategoriesCategoryLivewire;
 use App\Livewire\Root\Categories\RootCategoriesLivewire;
+use App\Livewire\Root\Products\CategoryProductsLivewire;
 use App\Livewire\Root\Products\ProductsLivewire as ProductsProductsLivewire;
 use App\Livewire\Root\Products\RootProductsLivewire;
 use App\Livewire\Root\Transaction\TransactionLivewire;
@@ -44,6 +48,8 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/categories', RootCategoriesLivewire::class)->name('root.categories');
     Route::get('/trasaction/status/{id}',TransactionLivewire::class)->name('root.transaction');
     Route::get('/orders',TransactionsLivewire::class)->name('root.orders');
+    Route::get('/categories',CategoriesCategoryLivewire::class)->name('root.categories');
+    Route::get('/categories/{id}/products',CategoryProductsLivewire::class)->name('root.cat.products');
     
 
     Route::get('/checkout/success/',function(){
@@ -93,5 +99,8 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
         Route::get('/dash/orders', OrdersLivewire::class)->name('orders');
         Route::get('/dash/sales/cashier', SalesCashierLivewire::class)->name('sales.cashier');
         Route::get('/dash/sales', SalesLivewire::class)->name('sales');
+        Route::get('/dash/discount', DiscountLivewire::class)->name('discount');
+        Route::get("/dash/reports",[PdfController::class,'report'])->name('pdf.report');
+
     });
 });

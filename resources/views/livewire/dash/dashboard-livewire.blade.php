@@ -50,7 +50,55 @@
                                 <h4>Products</h4>
                                 <h1>{{ $products->count() }}</h1>
                             </div>
-  
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-info" wire:click='create'>Report</button>
+                        <x-modal :status="$modal" title="Report" >
+                            @if ($modal)
+                            <iframe style="width: 100%; height:500px" src="{{ route('pdf.report') }}" frameborder="0"></iframe>
+                            @endif
+                        </x-modal>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-inverse ">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Orderid</th>
+                                            <th>User</th>
+                                            <th>Cost</th>
+                                            
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @forelse ($orders as $item)
+                                            <tr>
+                                                <td scope="row">{{ $item->id }}</td>
+                                                <td>{{$item->user->name}}</td>
+                                                <td>Mwk{{ $item->total }}.00</td>
+                                                <td><span class="badge bg-success" >{{ $item->status }}</span></td>
+                                                <td>
+
+                                                </td>
+
+                                            </tr>
+                                        @empty
+                                        @endforelse
+
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                     </div>
                 </div>

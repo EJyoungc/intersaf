@@ -3,6 +3,7 @@
 namespace App\Livewire\Root\Cart;
 
 use App\Models\Cart;
+use App\Models\DiscountSetting;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
@@ -15,6 +16,7 @@ class CartLivewire extends Component
     use LivewireAlert;
     public $modal = false;
     public $totalPrice = 0;
+    public $discount;
 
     public function viewcart()
     {
@@ -74,16 +76,27 @@ class CartLivewire extends Component
 
     public function checkout()
     {
+        // Fetch the discount percentage from the DiscountSetting model
+        $discountSetting = DiscountSetting::find(1);
+        $discountPercentage = $discountSetting->discount;
+        $this->discount = $discountPercentage;
 
+        // Fetch the cart items for the current user
         $cart = Cart::where('user_id', Auth::user()->id)->with('product')->get();
-        // $cart = Cart::where('user_id',Auth::user()->id)->get();
-        $this->totalPrice = $cart->sum(function ($cart) {
-            return $cart->product->price * $cart->quantity;
+
+        // Calculate the total price before applying the discount
+        $totalPriceBeforeDiscount = $cart->sum(function ($item) {
+            return $item->product->price * $item->quantity;
         });
 
+        // Calculate the discount amount
+        $discountAmount = ($totalPriceBeforeDiscount * $discountPercentage) / 100;
 
+        // Calculate the total price after applying the discount
+        $totalPriceAfterDiscount = $totalPriceBeforeDiscount - $discountAmount;
+
+        // Prepare line items for Stripe checkout session
         $lineItems = [];
-
         foreach ($cart as $item) {
             $lineItems[] = [
                 'price_data' => [
@@ -96,33 +109,38 @@ class CartLivewire extends Component
                 'quantity' => $item->quantity,
             ];
         }
+
+        // Set up Stripe session
         Stripe::setApiKey(env('STRIPE_SECRET'));
         $session = Session::create([
-
             'payment_method_types' => ['card'],
             'line_items' => $lineItems,
             'mode' => 'payment',
             'success_url' => route('checkout.success'),
             'cancel_url' => route('root.products'),
-
         ]);
 
+        // Store session ID and total amount in session for later retrieval
         session([
             'stripe_id' => $session->id,
-            'total'=>$this->totalPrice,
-        
+            'total' => $totalPriceAfterDiscount, // Use the discounted total price
         ]);
-        // dd(se)
 
+        // Redirect to Stripe checkout page
         return redirect()->to($session->url);
-    
     }
+
 
 
 
 
     public function render()
     {
+
+        $discountSetting = DiscountSetting::find(1);
+        $discountPercentage = $discountSetting->discount;
+        $this->discount = $discountPercentage;
+
         $cart = Cart::where('user_id', Auth::user()->id)->get();
         $this->totalPrice = $cart->sum(function ($cart) {
             return $cart->product->price * $cart->quantity;

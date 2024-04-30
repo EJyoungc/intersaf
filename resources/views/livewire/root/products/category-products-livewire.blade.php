@@ -2,6 +2,7 @@
   {{-- Close your eyes. Count to one. That is how long forever feels. --}}
 <section class="py-5 mt-5">
   <div class="container">
+    <h4>{{ $category->name }}</h4>
     <div class="form-group py-3">
       <input type="text" wire:model.live='search' class="form-control rounded-5" placeholder="search">
     </div>

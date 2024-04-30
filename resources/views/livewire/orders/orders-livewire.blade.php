@@ -52,8 +52,8 @@
                                                             options
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="triggerId">
-                                                            <button class="dropdown-item" href="#">View
-                                                                details</button>
+                                                            <button class="dropdown-item" wire:click.prevent='send_notif({{ $item->id }})'> <i class="fas fa-dice-three "></i>Send Notif
+                                                                </button>
                                                             {{-- <button class="dropdown-item" href="#">Edit</button> --}}
                                                         </div>
                                                     </div>

@@ -33,6 +33,7 @@
       <div class="me-auto p-2 " >
       
         <div class="">Total MWK{{ $totalPrice }}.00</div>
+        <div class="">Discount {{ $discount }}%</div>
       </div>
       <div class="ms-auto p-2">
         <button class="btn btn-primary" wire:click.prevent="checkout">Checkout</button>
